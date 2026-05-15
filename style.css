@@ -1,0 +1,36 @@
+#AccueilBody{
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to right, #ffffff 50%, #a20000 50%);  
+}
+
+#destination{
+    height: 70px;
+    width: 250px;
+    font-size: 1.2em;
+    color: white;
+    background-color:black ;
+    font-weight: bold;
+    
+}
+
+
+#Billet{
+    height: 70px;
+    width: 250px;
+    font-size: 1.2em;
+    color: white;
+    background-color:black ;
+    font-weight: bold;
+}
+
+
+.Navigation{
+    width:50%; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around
+}
+
+
+
