@@ -1,7 +1,7 @@
 #AccueilBody{
   height: 100vh;
   margin: 0;
-  background: linear-gradient(to right, #ffffff 50%, #a20000 50%);  
+  background: white;  
 }
 
 #destination{
@@ -26,28 +26,92 @@
 
 
 .Navigation{
-    width:50%; 
     display: flex;
     align-items: center;
-    justify-content: space-around
+    gap: 2rem;
+}
+
+.Ligne1{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Ligne2{
+    display: flex;
+    font-size: larger;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+#DestinationsContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+    margin-top: 60px;
+
+    flex-wrap: wrap;
+}
+
+
+
+
+.destination-card{
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+
+
+
+
+.destination-card:hover{
+    transform: scale(1.05);
+}
+
+
+
+.destination-card img{
+    border-radius: 15px;
+}
+
+
+
+#Contact{
+    background-color: black;
+    color: white;
+    padding: 40px;
+    margin-top: 50px;
+    
 }
 
 #StructureContact{
-    max-width: 600px; 
-    max-height: 800px; 
-    background-color: white; 
-    padding: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bolder;
-    border-color: black;
-    border-radius: 30px;
+    width: 25%;
 }
 
-#Contact{
-    width: 50%; 
-    display: flex; 
-    justify-content: center; 
+
+#ImageMap{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 

@@ -38,32 +38,43 @@ async function chargerDestinationFeu() {
         for(let dst of destinationsEnFeu){
             
         const image = document.createElement("img");
-        image.style.width = "200px";
-        image.style.height = "150px";
+        const destinationPrice = document.createElement("h2")
+
+        image.style.width = "275px";
+        image.style.height = "230px";
 
         switch(dst.pays){
             case "France":
                 image.src = "Images/france.jpg";
+                destinationPrice.innerHTML= '<span class = "Ligne1"> France </span><br><span class = "Ligne2"> 1395$</span>';
+                
+
                 break;
             case "Australie":
                 image.src = "Images/australie.jpg";
+                destinationPrice.innerHTML= '<span class = "Ligne1"> Australie </span><br><span class = "Ligne2"> 2100$</span>';
+                
                 break;
             case "Mexique":
                 image.src = "Images/mexique.jpg";
+                destinationPrice.innerHTML= '<span class = "Ligne1"> Mexique </span><br><span class = "Ligne2"> 900$</span>';
                 break;
         }
 
 
         if(numeroDeDestinatios === 1){
             destination1.appendChild(image);
+            destination1.appendChild(destinationPrice);
         }
 
         if(numeroDeDestinatios === 2){
             destination2.appendChild(image);
+            destination2.appendChild(destinationPrice);
         }
 
         if(numeroDeDestinatios === 3){
             destination3.appendChild(image);
+            destination3.appendChild(destinationPrice);
         }
 
         
