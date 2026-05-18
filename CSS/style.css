@@ -38,5 +38,13 @@
     align-items: center;
 }
 
+.header{
+    background-color: red;
+}
 
-
+.header h1 {
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 1%;
+}
