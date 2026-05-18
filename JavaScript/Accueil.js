@@ -1,23 +1,33 @@
-
-
 function redirigerDestination(){
     window.open("Destination+.html","_blank");
-    }
-
-function redirigerTrouverVotreBillet(){
-    window.open("Billet.html","_blanc");
 }
 
+function redirigerTrouverVotreBillet(){
+    window.open("Billet.html","_blank");
+}
+
+function redirigerClients() {
+    window.open("clients.html", "_blank");
+}
+
+function redirigerAvions() {
+    window.open("avions.html", "_blank");
+}
+
+function redirigerDepart() {
+    window.open("depart.html", "_blank");
+}
+
+function redirigerVols() {
+    window.open("vols.html", "_blank");
+}
 
 
 const destination1 = document.getElementById("destinationEnFeu#1");
 const destination2 = document.getElementById("destinationEnFeu#2");
 const destination3 = document.getElementById("destinationEnFeu#3")
 
-
-
 async function chargerDestinationFeu() {
-
 
     try{
         const destinations = await getAll('destination');
