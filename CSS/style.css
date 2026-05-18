@@ -1,5 +1,4 @@
 #AccueilBody{
-  height: 100vh;
   margin: 0;
   background: white;  
 }
@@ -27,7 +26,6 @@
 
 .Navigation{
     display: flex;
-    align-items: center;
     gap: 2rem;
 }
 
@@ -121,4 +119,41 @@
 }
 
 
+#header{
+    display: flex;
+    justify-content: space-between; 
+    margin: 0px;
+    padding: 0px;
+}
 
+
+#WelcomeMessage{
+    text-align: center;
+    font-size: 35px;
+    justify-content: center;
+}
+
+#Schedule{
+    display: flex; 
+    justify-content: center;
+}
+
+
+#Logo{
+    width: 500px; 
+    height: 300px; 
+}
+
+#LogoSeulement{
+    height: 50px;
+    width: 100px;
+}
+
+
+#ImageDestinations img{
+    max-width: 300rem;
+    max-height: 30rem;
+    padding: 10px;
+    border-radius: 20px;
+
+}

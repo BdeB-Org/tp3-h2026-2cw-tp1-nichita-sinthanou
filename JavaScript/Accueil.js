@@ -89,7 +89,9 @@ async function chargerDestinationFeu() {
     }
 }
 
-console.log('Salut');
+destination1.addEventListener("click", function(){
+   window.location.href = "AchatBillet.html?pays=France";
+});
 
 
 chargerDestinationFeu();
