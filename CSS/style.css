@@ -102,16 +102,22 @@
 }
 
 #StructureContact{
-    width: 25%;
+    width: 50%;
 }
 
 
 #ImageMap{
-    width: 75%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#ImageMap img{
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
 }
 
 
