@@ -2,8 +2,19 @@
   margin: 0;
   background: white;  
 }
+#Billet{
+    height: 70px;
+    width: 250px;
+    font-size: 1.2em;
+    color: white;
+    background-color:black ;
+    font-weight: bold;
 
-#Button{
+}
+
+
+
+#destination{
     height: 70px;
     width: 250px;
     font-size: 1.2em;

@@ -265,7 +265,17 @@ try{
     }catch(error){
         console.log("Message",error);
 
-    }}
+    }};
+
+
+    function redirigerDestination(){
+    window.open("Destination+.html","_blank");
+    }
+
+function redirigerTrouverVotreBillet(){
+    window.open("Billet.html","_blanc");
+}
+
 
 
 
