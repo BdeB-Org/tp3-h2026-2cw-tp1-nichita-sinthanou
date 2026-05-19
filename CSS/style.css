@@ -12,6 +12,10 @@
 
 }
 
+#Billet:hover{
+     transform: scale(1.05);
+}
+
 
 
 #destination{
@@ -21,6 +25,10 @@
     color: white;
     background-color:black ;
     font-weight: bold;
+}
+
+#destination:hover{
+     transform: scale(1.05);
 }
 
 .Navigation{
@@ -121,6 +129,7 @@
 #header{
     display: flex;
     justify-content: space-between; 
+    align-items: center;
     margin: 0px;
     padding: 0px;
 }
@@ -152,8 +161,8 @@
 }
 
 #LogoSeulement{
-    height: 50px;
-    width: 100px;
+    height: 5rem;
+    width: 10rem;
 }
 
 
@@ -193,7 +202,12 @@
 .Achat button{
     width: 6rem; 
     height: 4rem;
-    background-color: green;
+    color: white;
+    background-color: black;
+}
+
+.Achat button:hover{
+     transform: scale(1.05);
 }
 
 

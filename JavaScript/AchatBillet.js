@@ -8,6 +8,7 @@ const descriptionPays = document.getElementById("Description");
 const ImageDestination1 = document.getElementById("ImageDestination");
 const ImageDestination2 = document.getElementById("ImageDestination2");
 const volsDisponibles = document.getElementById("VolsDisponibles");
+const Logo = document.getElementById("LogoSeulement");
 
 
 
@@ -275,6 +276,14 @@ try{
 function redirigerTrouverVotreBillet(){
     window.open("Billet.html","_blanc");
 }
+
+
+
+Logo.addEventListener("click", () =>{
+        window.location.href = "Accueil.html";
+});
+
+
 
 
 
