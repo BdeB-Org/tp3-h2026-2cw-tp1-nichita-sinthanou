@@ -133,6 +133,14 @@
     justify-content: center;
 }
 
+
+#WelcomeMessage img{
+    object-fit: cover; 
+    display: block; 
+    height: 40rem; 
+    width: 100%;
+}
+
 #Schedule{
     display: flex; 
     justify-content: center;
@@ -156,4 +164,55 @@
     padding: 10px;
     border-radius: 20px;
 
+}
+
+
+
+.Vol{
+    border: 2px solid rgba(0, 0, 0, 0.66); 
+    padding: 1rem; 
+    border-radius: 20px; 
+    width: fit-content;
+    border-bottom:2px solid rgba(41, 40, 40, 0.736);
+
+}
+
+
+
+
+
+.Achat{
+    display: flex; 
+    align-items: center; 
+    justify-content: space-around;
+}
+
+.Achat p{
+    font-size: xx-large;
+}
+
+.Achat button{
+    width: 6rem; 
+    height: 4rem;
+    background-color: green;
+}
+
+
+#VolsDisponibles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+
+.AllignementCompagnie{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.AllignementCompagnie img{
+    width: 50px;
+    height: 40px;
 }

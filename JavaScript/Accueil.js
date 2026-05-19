@@ -1,18 +1,15 @@
 
 
-function redirigerDestination(){
-    window.open("Destination+.html","_blank");
-    }
-
-function redirigerTrouverVotreBillet(){
-    window.open("Billet.html","_blanc");
-}
 
 
 
-const destination1 = document.getElementById("destinationEnFeu#1");
-const destination2 = document.getElementById("destinationEnFeu#2");
-const destination3 = document.getElementById("destinationEnFeu#3")
+
+const divDestinationEnFeu = document.getElementById("DestinationsContainer")
+
+
+chargerDestinationFeu();
+
+
 
 
 
@@ -28,73 +25,69 @@ async function chargerDestinationFeu() {
         }
 
     const destinationsEnFeu= destinations.filter(d => d.en_feu === true);
+    console.log(destinationsEnFeu);
 
     if(destinationsEnFeu.length > 3){
         console.log("Trois destinations en feu possible!");
         return;
     }else{
-        let numeroDeDestinatios = 1;
-        
+
         for(let dst of destinationsEnFeu){
             
+        const div = document.createElement("div");
+        div.classList.add("destination-card");
+        console.log(div.className);
+        div.id = dst.pays;
+        console.log(div.id);
+
+
+       divDestinationEnFeu.appendChild(div);
+            
         const image = document.createElement("img");
-        const destinationPrice = document.createElement("h2")
+        const destinationNom = document.createElement("h2")
 
         image.style.width = "275px";
         image.style.height = "230px";
 
-        switch(dst.pays){
-            case "France":
-                image.src = "Images/france.jpg";
-                destinationPrice.innerHTML= '<span class = "Ligne1"> France </span><br><span class = "Ligne2"> 1395$</span>';
-                
-
-                break;
-            case "Australie":
-                image.src = "Images/australie.jpg";
-                destinationPrice.innerHTML= '<span class = "Ligne1"> Australie </span><br><span class = "Ligne2"> 2100$</span>';
-                
-                break;
-            case "Mexique":
-                image.src = "Images/mexique.jpg";
-                destinationPrice.innerHTML= '<span class = "Ligne1"> Mexique </span><br><span class = "Ligne2"> 900$</span>';
-                break;
-        }
-
-
-        if(numeroDeDestinatios === 1){
-            destination1.appendChild(image);
-            destination1.appendChild(destinationPrice);
-        }
-
-        if(numeroDeDestinatios === 2){
-            destination2.appendChild(image);
-            destination2.appendChild(destinationPrice);
-        }
-
-        if(numeroDeDestinatios === 3){
-            destination3.appendChild(image);
-            destination3.appendChild(destinationPrice);
-        }
-
+        image.src="Images/" + dst.pays.toLowerCase() + ".jpg";
+        destinationNom.textContent = dst.pays;
         
-
-        numeroDeDestinatios++;
-    }
+        div.appendChild(image);
+        div.appendChild(destinationNom);
 }
-    
-}catch(error){
+
+
+ajouterFonction();
+
+}}catch(error){
         console.log("Message",error)
 
     }
 }
 
-destination1.addEventListener("click", function(){
-   window.location.href = "AchatBillet.html?pays=France";
-});
+
+function ajouterFonction(){
+
+    const divs = document.querySelectorAll(".destination-card");
+    console.log(divs);
+    divs.forEach(div => {
+        div.onclick = function(){
+            window.location.href = "AchatBillet.html?pays=" + div.id;
+        };
+        
+    });
+}
 
 
-chargerDestinationFeu();
+
+function redirigerDestination(){
+    window.open("Destination+.html","_blank");
+    }
+
+function redirigerTrouverVotreBillet(){
+    window.open("Billet.html","_blanc");
+}
+
 
 
 
