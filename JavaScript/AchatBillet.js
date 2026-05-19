@@ -216,7 +216,7 @@ if(pays === "États-Unis"){
         div.innerHTML = `<h4> Montéal(${vol.code_iata_départ}) &#8596; Los Angeles(${vol.code_iata_destination})<h4>`
 
          divCompagnie.innerHTML = ` 
-        <img src = "Images/${avion.compagnie.toLowerCase().trim().replaceAll(" ","")}.jpg">
+        <img  src = "Images/${avion.compagnie.toLowerCase().trim().replaceAll(" ","")}.jpg">
         <span>${avion.compagnie} &bull; ${transfer}`
         
         divPrix.innerHTML = 
