@@ -4,6 +4,9 @@ const Logo = document.getElementById("LogoSeulement");
 chargerDestination();
 
 
+//Crée par Nichita Gitlan
+
+
 
 
 async function chargerDestination() {

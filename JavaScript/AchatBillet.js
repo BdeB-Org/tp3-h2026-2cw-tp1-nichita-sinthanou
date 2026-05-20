@@ -1,3 +1,8 @@
+
+
+//Crée par Nichita Gitlan
+
+
 const params = new URLSearchParams(window.location.search);
 const pays = params.get("pays");
 console.log(pays);

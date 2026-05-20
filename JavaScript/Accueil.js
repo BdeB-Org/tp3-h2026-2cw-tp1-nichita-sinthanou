@@ -1,7 +1,7 @@
 
 
 
-
+//Crée par Nichita Gitlan
 
 
 const divDestinationEnFeu = document.getElementById("DestinationsContainer")
