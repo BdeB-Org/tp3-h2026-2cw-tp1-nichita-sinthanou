@@ -9,6 +9,8 @@ const ImageDestination1 = document.getElementById("ImageDestination");
 const ImageDestination2 = document.getElementById("ImageDestination2");
 const volsDisponibles = document.getElementById("VolsDisponibles");
 const Logo = document.getElementById("LogoSeulement");
+const button = document.getElementById("Achat")
+
 
 
 ImageDestination1.src ="Images/" + pays + "1.jpg"
@@ -82,7 +84,7 @@ async function chargerVolDisponible(pays){
         
         divPrix.innerHTML = 
         `<p> ${vol.prix}$</p>
-        <button style="width: 6rem; height: 4rem;" > Acheter</button>`
+        <button class="btn-acheter" data-id = ${vol.id_vol}> Acheter</button>`
 
 
         div.appendChild(divCompagnie);
@@ -164,6 +166,22 @@ function redirigerTrouverVotreBillet(){
 Logo.addEventListener("click", () =>{
         window.location.href = "Accueil.html";
 });
+
+
+
+// Remplace uniquement le bloc du bas de ton fichier AchatBillet.js par celui-ci :
+volsDisponibles.addEventListener("click", (event) => {
+    if (event.target.classList.contains("btn-acheter")) {
+        const idVol = event.target.getAttribute("data-id");
+        // CORRECTION : Plus aucun espace autour du "="
+        window.location.href = `PortailAchat.html?id=${idVol}`;
+    }
+});
+
+
+
+
+
 
 
 
