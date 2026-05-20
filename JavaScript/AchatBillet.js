@@ -11,121 +11,77 @@ const volsDisponibles = document.getElementById("VolsDisponibles");
 const Logo = document.getElementById("LogoSeulement");
 
 
+ImageDestination1.src ="Images/" + pays + "1.jpg"
+ImageDestination2.src = "Images/" + pays + "2.jpg";
 
-if(pays === "France"){
-    ImageDestination1.src = "Images/ImageFrance.jpg";
-    ImageDestination2.src = "Images/ImageFrance2.jpg";
-    descriptionPays.textContent = "Visiter le pays d'amour!";
-    chargerVolDisponible();
-}else if(pays === "Australie"){
-    ImageDestination1.src = "Images/Australie1.avif";
-    ImageDestination2.src = "Images/Australie2.jpg";
-    descriptionPays.textContent = "Voulez vous voir les kengourou?"
-    chargerVolDisponible();
-}else if(pays === "Mexique"){
-    ImageDestination1.src = "Images/mexique1.jpg"
-    ImageDestination2.src = "Images/mexique2.jpg"
-    descriptionPays.textContent = "Ah!Un mer formidable!"
-    chargerVolDisponible();
-}else if(pays === "États-Unis"){
-    ImageDestination1.src = "Images/losangeles.jpg"
-    ImageDestination2.src = "Images/losangeles2.webp"
-    descriptionPays.textContent = "Visiter les États-Unis!"
-    chargerVolDisponible();
+
+switch(pays){
+    case "France":
+        descriptionPays.textContent = "Visiter le pays d'amour!";
+        break;
+    case "Australie":
+        descriptionPays.textContent = "Voulez vous voir les kengourou?";
+        break;
+    case "Mexique":
+        descriptionPays.textContent = "Ah!Un mer formidable!";
+        break;
+    case "États-Unis":
+        descriptionPays.textContent = "Visiter les États-Unis!";
+        break;
+    default:
+        descriptionPays.textContent = "Visitez la " + pays + "!";
+        break;
+
 }
 
 
+chargerVolDisponible(pays);
 
 
 
 
 
 
-async function chargerVolDisponible(){
-
-    let vols = await chargerVols();
-
-   if(pays === "France"){
-
-    const volsFrance = vols.filter(d => d.code_iata_destination === "ORY" || d.code_iata_destination === "CDG");
-    console.log(volsFrance);
-
-    if(!volsFrance.length){
-        volsDisponibles.textContent = "Aucune vol pour le moment!";
-    };
 
 
-    for(let vol of volsFrance){
+
+async function chargerVolDisponible(pays){
+
+    let vols = await chargerVols(pays);
+    console.log(vols)
+
+    if(!vols.length){
+        const texte = document.createElement("h1");
+        texte.textContent = "Aucunes vols pour le moment!";
+        volsDisponibles.appendChild(texte);
+        return;
+}
+    
+    
+    
+    for(let vol of vols){
         
         let div = document.createElement("div");
         let divPrix = document.createElement("div");
         div.classList.add("Vol");
         divPrix.classList.add("Achat");
+
         let transfer = "Nonstop"
         let divCompagnie = document.createElement("div")
         divCompagnie.classList.add("AllignementCompagnie")
 
         if(vol.transfer > 0){
             transfer = vol.transfer + " stop"
-        };
+        }
 
-    
-        
+
         const avion = await chargerAvion(vol.id_avion);
         
-        div.innerHTML = `<h4> Montéal(${vol.code_iata_départ}) &#8596; Mexique(${vol.code_iata_destination})<h4>`
+        div.innerHTML = `<h4> Montéal(${vol.code_iata_départ}) &#8596; ${vol.ville}(${vol.code_iata_destination})<h4>`
 
-         divCompagnie.innerHTML = ` 
-        <img src = "Images/${avion.compagnie.toLowerCase().trim().replaceAll(" ","")}.jpg">
-        <span>${avion.compagnie} &bull; ${transfer}`
-        
-        divPrix.innerHTML = 
-        `<p> ${vol.prix}$</p>
-        <button style="width: 6rem; height: 4rem;" > Acheter</button>`
-
-
-        div.appendChild(divCompagnie);
-        div.appendChild(divPrix);
-        volsDisponibles.appendChild(div);
-    }};
-
-if(pays === "Australie"){
-
-    const volsAustralie = vols.filter(d => d.code_iata_destination === "SYD");
-    console.log(volsAustralie);
-
-    if(!volsAustralie.length){
-        volsDisponibles.textContent = "Aucune vol pour le moment!";
-    };
-
-
-    for(let vol of volsAustralie){
-        
-        let div = document.createElement("div");
-        let divPrix = document.createElement("div");
-        let divCompagnie = document.createElement("div")
-        divCompagnie.classList("AllignementCompagnie")
-        div.classList.add("Vol");
-        divPrix.classList.add("Achat");
-        let transfer = "Nonstop"
-
-        if(vol.transfer > 0){
-            transfer = vol.transfer + " stop"
-        };
-
-    
-        
-        const avion = await chargerAvion(vol.id_avion);
-        
-        div.innerHTML = `<h4> Montéal(${vol.code_iata_départ}) &#8596; Australie(${vol.code_iata_destination})<h4>`
-
-
-        divCompagnie.innerHTML = ` 
-        <img src = "Images/${avion.compagnie.toLowerCase().trim().replaceAll(" ","")}.jpg">
-        <span>${avion.compagnie} &bull; ${transfer}`
-
-        
-       
+        divCompagnie.innerHTML = `
+    <img src="Images/${avion.compagnie.toLowerCase().trim().replaceAll(" ", "")}.jpg"> <span>${avion.compagnie} &bull; ${transfer}</span>
+`;
         
         divPrix.innerHTML = 
         `<p> ${vol.prix}$</p>
@@ -136,120 +92,50 @@ if(pays === "Australie"){
         div.appendChild(divPrix);
         volsDisponibles.appendChild(div);
 
-
-
-    }};
-    if(pays === "Mexique"){
-
-    const volsMexique = vols.filter(d => d.code_iata_destination === "CUN" || d.code_iata_destination === "TLC");
-    console.log(volsMexique);
-
-    if(!volsMexique.length){
-        volsDisponibles.textContent = "Aucune vol pour le moment!";
-    };
-
-
-    for(let vol of volsMexique){
-        
-        let div = document.createElement("div");
-        let divPrix = document.createElement("div");
-        div.classList.add("Vol");
-        divPrix.classList.add("Achat");
-        let transfer = "Nonstop"
-        let divCompagnie = document.createElement("div")
-        divCompagnie.classList.add("AllignementCompagnie")
-
-        if(vol.transfer > 0){
-            transfer = vol.transfer + " stop"
-        };
-
     
         
-        const avion = await chargerAvion(vol.id_avion);
         
-        div.innerHTML = `<h4> Montéal(${vol.code_iata_départ}) &#8596; Mexique(${vol.code_iata_destination})<h4>`
-
-         divCompagnie.innerHTML = ` 
-        <img src = "Images/${avion.compagnie.toLowerCase().trim().replaceAll(" ","")}.jpg">
-        <span>${avion.compagnie} &bull; ${transfer}`
-        
-        divPrix.innerHTML = 
-        `<p> ${vol.prix}$</p>
-        <button style="width: 6rem; height: 4rem;" > Acheter</button>`
+    }
+};
 
 
-        div.appendChild(divCompagnie);
-        div.appendChild(divPrix);
-        volsDisponibles.appendChild(div);
+
+
+  async function chargerVols(pays) {
+
     
 
-
-}}
-if(pays === "États-Unis"){
-
-    const volsÉtatsUnis = vols.filter(d => d.code_iata_destination === "LAX" || d.code_iata_destination === "SEA");
-    console.log(volsÉtatsUnis);
-
-    if(!volsÉtatsUnis.length){
-        volsDisponibles.textContent = "Aucune vol pour le moment!";
-    };
-
-
-    for(let vol of volsÉtatsUnis){
-        
-        let div = document.createElement("div");
-        let divPrix = document.createElement("div");
-        div.classList.add("Vol");
-        divPrix.classList.add("Achat");
-        let transfer = "Nonstop"
-        let divCompagnie = document.createElement("div")
-        divCompagnie.classList.add("AllignementCompagnie")
-
-        if(vol.transfer > 0){
-            transfer = vol.transfer + " stop"
-        };
-
-    
-        
-        const avion = await chargerAvion(vol.id_avion);
-        
-        div.innerHTML = `<h4> Montéal(${vol.code_iata_départ}) &#8596; Los Angeles(${vol.code_iata_destination})<h4>`
-
-         divCompagnie.innerHTML = ` 
-        <img  src = "Images/${avion.compagnie.toLowerCase().trim().replaceAll(" ","")}.jpg">
-        <span>${avion.compagnie} &bull; ${transfer}`
-        
-        divPrix.innerHTML = 
-        `<p> ${vol.prix}$</p>
-        <button style="width: 6rem; height: 4rem;" > Acheter</button>`
-
-
-        div.appendChild(divCompagnie);
-        div.appendChild(divPrix);
-        volsDisponibles.appendChild(div);
-    
-
-
-}}};
-
-
-
-
-  async function chargerVols() {
     try{
         const vol = await getAll('vol');
-        
+        const destination = await getAll('destination');
+        let volDisponibles = []
+
+        for(let v of vol){
+            for(let dst of destination){
+                if(v.code_iata_destination === dst.code_iata && dst.pays === pays ){
+                        volDisponibles.push({...v,ville: dst.ville});
+                    }
+                }
+            }
+
+
+            
+            
     if(!vol.length){
         console.log("Aucune vols");
         return;
 
         }else{
-            return vol;
+            return volsDisponibles;
         }
 
 }catch(error){
         console.log("Message",error);
-    }}
+    }};
+
+
+
+    
 
 
 async function chargerAvion(id_avion) {
@@ -271,11 +157,11 @@ try{
 
     function redirigerDestination(){
     window.open("Destination+.html","_blank");
-    }
+    };
 
 function redirigerTrouverVotreBillet(){
     window.open("Billet.html","_blanc");
-}
+};
 
 
 
