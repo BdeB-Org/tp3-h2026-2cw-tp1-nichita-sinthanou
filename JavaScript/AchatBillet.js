@@ -55,10 +55,7 @@ async function chargerVolDisponible(pays){
         texte.textContent = "Aucunes vols pour le moment!";
         volsDisponibles.appendChild(texte);
         return;
-}
-    
-    
-    
+}else{
     for(let vol of vols){
         
         let div = document.createElement("div");
@@ -95,8 +92,7 @@ async function chargerVolDisponible(pays){
     
         
         
-    }
-};
+    }}};
 
 
 
@@ -126,7 +122,7 @@ async function chargerVolDisponible(pays){
         return;
 
         }else{
-            return volsDisponibles;
+            return volDisponibles;
         }
 
 }catch(error){

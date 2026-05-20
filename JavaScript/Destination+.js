@@ -1,4 +1,5 @@
 const destinationPossible = document.getElementById("DestinationPossible");
+const Logo = document.getElementById("LogoSeulement");
 
 chargerDestination();
 
@@ -68,6 +69,11 @@ function ajouterFonction(){
         
     });
 }
+
+
+Logo.addEventListener("click", () =>{
+        window.location.href = "Accueil.html";
+});
 
 
 
